@@ -68,6 +68,30 @@ class QuadTree {
       }
     }
   }
+    get children() {
+    if (this.divided) {
+      return [
+        this.northeast,
+        this.northwest,
+        this.southeast,
+        this.southwest
+      ];
+    } else {
+      return [];
+    }
+  }
+
+  clear() {
+    this.points = [];
+
+    if (this.divided) {
+      this.divided = false;
+      delete this.northwest;
+      delete this.northeast;
+      delete this.southwest;
+      delete this.southeast;
+    }
+  }
 
   show() {
     stroke(255);
